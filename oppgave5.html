@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            antall dager i et måned
+            antall dager i et måned 22
         </title>
 
 
@@ -29,7 +29,7 @@
             </h1>
 
 
-            <input type="number" id="month" />
+            <input type="text" id="month" />
 
             <button onclick="test()">
                 Knapp
@@ -43,12 +43,19 @@
         <script>
             let output = document.getElementById("output");
             let dager = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+            let maneder = ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"]
 
             function test() {
-                let month = Number(document.getElementById("month").value);
+                let month = document.getElementById("month").value;
 
-                if (month && month < 13) {
-                    output.innerHTML = `Denne måneden har ${dager[month - 1]} dager`
+                if (month) {
+                    for (i = 0; i < maneder.length; i++) {
+                        if (month == maneder[i]) {
+                            console.log(month)
+                            output.innerHTML = `Måneden ${maneder[i]} har ${dager[i]} dager`
+                            break;
+                        }
+                    }
                 } else {
                     output.innerHTML = "Noe feil har oppstått"
                 }
