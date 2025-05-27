@@ -47,20 +47,23 @@
                 let array = []
                 let find = ""
 
-                for (i = 0; i < amount; i++) {
-                    find = arr[Math.floor((Math.random() * arr.length))]
+                if (amount <= arr.length) { 
+                    for (i = 0; i < amount; i++) {
+                        find = arr[Math.floor((Math.random() * arr.length))] //velg en random element i arrayen
 
-                    if (find) {
-                        array += `${find} <br>`
-                        for (j = 0; j < arr.length; j++) {
-                            if (arr[j] == find) {
-                                arr[j] = ""
+                        if (find) {
+                            array += `${find} <br>`
+                            for (j = 0; j < arr.length; j++) { //slett den elementen fra arrayen etter at vi fant det
+                                if (arr[j] == find) {
+                                    delete arr[j]
+                                }
                             }
+                        } else { //hvis vi fant en element som er tomt, kjører vi programmet en ganger til
+                            i--
                         }
-                    } else {
-                        i--
-                    }
-                } 
+                    } 
+                }
+                
 
                 output.innerHTML = array
             }
