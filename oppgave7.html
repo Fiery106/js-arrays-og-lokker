@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Velg random element fra array
+        </title>
+
+
+        <style>
+            button {
+                border-radius: 1rem;
+                border: none;
+                font-size: 16px;
+                width: 10rem;
+                height: 5rem;
+                text-align: center;
+                padding: 4px;
+                margin: 4px;
+            }
+        </style>
+    </head>
+
+
+
+    <body>
+        <div>
+            <h1>
+                Lorem ipsum dolor sit amet.
+            </h1>
+
+
+            <button onclick="test()">
+                Knapp
+            </button>
+
+
+            <p id="output"></p>
+        </div>
+
+
+        <script>
+            let output = document.getElementById("output");
+            let amount = 3;
+
+            function test() {
+                let arr = ["Hans","Ole","Nils","Olav","Per","Knut","Kari","Line","Pia"]; 
+                let array = []
+                let find = ""
+
+                for (i = 0; i < amount; i++) {
+                    find = arr[Math.floor((Math.random() * arr.length))]
+
+                    if (find) {
+                        array += `${find} <br>`
+                        for (j = 0; j < arr.length; j++) {
+                            if (arr[j] == find) {
+                                arr[j] = ""
+                            }
+                        }
+                    } else {
+                        i--
+                    }
+                } 
+
+                output.innerHTML = array
+            }
+        </script>
+    </body>
+</html>
